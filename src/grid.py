@@ -1,14 +1,8 @@
 class Grid:
-    def __init__(self, cell_size: int):
+    def __init__(self, cell_size: int, cell_count: int = 6):
         self._cell_size = cell_size
-        self._data = [
-            ['  ' , '  ' , '  ' , '  ' , '  ' , '  ' ],
-            ['  ' , '  ' , '  ' , '  ' , '  ' , '  ' ],
-            ['  ' , '  ' , '  ' , '  ' , '  ' , '  ' ],
-            ['  ' , '  ' , '  ' , '  ' , '  ' , '  ' ],
-            ['  ' , '  ' , '  ' , '  ' , '  ' , '  ' ],
-            ['  ' , '  ' , '  ' , '  ' , '  ' , '  ' ],
-        ]
+        self._cell_count = cell_count
+        self._data = [['  ' for _ in range(cell_count)] for _ in range(cell_count)]
 
     def set_from_pixel(self, row: int, column: int, value: str):
         r = row // self._cell_size
@@ -37,9 +31,9 @@ class Grid:
 
     def pretty_print(self):
         for line in self._data:
-            print(" +" + "----+"*6)
+            print(" +" + "----+"*self._cell_count)
             print(" | " + " | ".join(str(x) for x in line) + " | ")
-        print(" +" + "----+"*6)
+        print(" +" + "----+"*self._cell_count)
 
 if __name__ == "__main__":
     grid = Grid()

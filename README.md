@@ -11,18 +11,26 @@ A quick'n'dirty lnkd.in/zip solver.
     1. No - repeat
     1. Yes - return crop
 
-### :poop:
-1. dirty stuff to clean up
+### Get size of grid
+1. detect lines, horizontal and vertical (`cv2.HoughLinesP`)
+2. de-duplicate lines
+3. count lines -> calculate cell count
+
+### Normalize grid size
+So that cell size is a known constant for the rest of the algorithm.
 
 ### Find numbers in grid
 1. `cv2.HoughCircles`
 1. Template matching to images (`templates/*.png`)
+2. take into account that circle radius may vary.
+   Adjust template size is needed.
 
-### :poop:
-1. more dirty stuff to clean up
+### Detect barriers
+1. get ROIs for cell borders
+2. count black pixels and guess if barrier or not
 
 ### Solve
 1. https://medium.com/@mvenkatashivaditya/linkedin-zip-puzzle-solver-python-953be08daab3
-1. Get keystrokes necesssary to travel the path
+1. Get keystrokes necessary to travel the path
 1. Replay keystrokes
 

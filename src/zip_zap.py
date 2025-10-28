@@ -85,32 +85,32 @@ def pretty_print(grid, barrier_bricks=None):
 
 
 if __name__ == "__main__":
-    # test case without barriers
-    zipArray = [
-        [None, None,  8,  4, None, None],
-        [None,    7, None, None,   5, None],
-        [   9, None, None, None, None,   3],
-        [None, None,   6,   2, None, None],
-        [None,    1, None, None,  11, None],
-        [  10, None, None, None, None,  12],
-    ]
-    barrier_bricks = []
-    zipSolver(zipArray, barrier_bricks)
-
-
-
-    # # test case with barriers
+    # # test case without barriers
     # zipArray = [
-    #     [ 9, None, None, None, None, None,  8],
-    #     [None,    3, None, None, None,   5, None],
-    #     [None, None, None, None, None, None, None],
-    #     [None, None, None,    1, None, None, None],
-    #     [None, None, None, None, None, None, None],
-    #     [None,    2, None, None, None,   6, None],
-    #     [ 4, None, None, None, None, None,  7],
+    #     [None, None,  8,  4, None, None],
+    #     [None,    7, None, None,   5, None],
+    #     [   9, None, None, None, None,   3],
+    #     [None, None,   6,   2, None, None],
+    #     [None,    1, None, None,  11, None],
+    #     [  10, None, None, None, None,  12],
     # ]
-    # barrier_bricks = [
-    #     {(1, 2), (1, 3)},
+    # barrier_bricks = []
+    # zipSolver(zipArray, barrier_bricks)
+
+
+
+    # test case with barriers
+    zipArray = [
+        [ 9, None, None, None, None, None,  8],
+        [None,    3, None, None, None,   5, None],
+        [None, None, None, None, None, None, None],
+        [None, None, None,    1, None, None, None],
+        [None, None, None, None, None, None, None],
+        [None,    2, None, None, None,   6, None],
+        [ 4, None, None, None, None, None,  7],
+    ]
+    barrier_bricks = [
+        {(1, 2), (1, 3)},
     #     {(1, 3), (1, 4)},
     #     {(3, 0), (3, 1)},
     #     {(3, 1), (3, 2)},
@@ -118,5 +118,5 @@ if __name__ == "__main__":
     #     {(3, 5), (3, 6)},
     #     {(5, 2), (5, 3)},
     #     {(5, 3), (5, 4)},
-    # ]
-    # zipSolver(zipArray, barrier_bricks)
+    ]
+    zipSolver(zipArray, barrier_bricks)

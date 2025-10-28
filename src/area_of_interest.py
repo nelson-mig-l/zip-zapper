@@ -1,6 +1,39 @@
 import cv2
+import pyautogui
 
 from utils import dump_image
+
+
+TEMP_FILE = "examples/screen_shot.png"
+
+def is_valid_area(area: cv2.Mat) -> bool:
+    area_shape = area.shape
+    area_shape_width = area_shape[1]
+    area_shape_height = area_shape[0]
+    return abs(area_shape_width - area_shape_height) < 10
+
+def load_grid(file_name: str) -> cv2.Mat:
+    image = cv2.imread(file_name)
+    if image is None:
+        raise ValueError(f"Could not load image from path: {file_name}")
+    grid = get_area_of_interest(image)
+    if not is_valid_area(grid):
+        raise ValueError("The loaded area of interest is not valid")
+    return grid
+
+
+def acquire_grid() -> cv2.Mat:
+    while True:
+        screenshot = pyautogui.screenshot()
+        screenshot.save(TEMP_FILE)
+        image = cv2.imread(TEMP_FILE)
+        if image is None:
+            raise ValueError(f"Could not load image from path: {TEMP_FILE}")
+
+        grid = get_area_of_interest(image)
+
+        if is_valid_area(grid):
+            return grid
 
 
 def get_area_of_interest(image: cv2.Mat) -> cv2.Mat:
